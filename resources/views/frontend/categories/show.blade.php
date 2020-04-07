@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row align-items-center">
         <div class=" col-md-9">
-            <h1 class="my-5">Alle Produkte</h1>
+            <h1 class="my-5">Category 1</h1>
         </div>
         <div class=" col-md-3">
             <select class="custom-select">
