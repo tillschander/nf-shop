@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('frontend/home');
+    $products = App\Product::take(4)->get();
+    return view('frontend/home', ['products' => $products]);
 });
 
 Route::get('/admin', function () {
     return view('backend/home');
+});
+
+Route::get('/products', function() {
+    return App\Product::all();
 });

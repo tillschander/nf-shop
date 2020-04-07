@@ -6,44 +6,16 @@
     <h2 class="mb-3">Bestsellers</h2>
     <div class="row mb-5 d-flex justify-content-between">
         <div class="col-md-3">
+            @foreach($products as $product)
             <a href="product.html" class="d-block border rounded mb-4 p-0 shadow-sm text-decoration-none">
                 <img class="img-fluid mb-3" src="https://images.unsplash.com/photo-1510018572596-e40e2619b412?fit=crop&w=500&h=350&q=80" />
-                <h4 class="text-muted mb-1">Product Name</h4>
+                <h4 class="text-muted mb-1">{{ $product->name }}</h4>
                 <div class="mb-3">
-                    <s class="text-muted">3.65 €</s>
-                    <span class="text-dark">2.99 €</span>
+                    @if($product->msrp)<s class="text-muted">{{ $product->msrp }} €</s>@endif
+                    <span class="text-dark">{{ $product->price }} €</span>
                 </div>
             </a>
-        </div>
-        <div class="col-md-3">
-            <a href="product.html" class="d-block border rounded mb-4 p-0 shadow-sm text-decoration-none">
-                <img class="img-fluid mb-3" src="https://images.unsplash.com/photo-1510018572596-e40e2619b412?fit=crop&w=500&h=350&q=80" />
-                <h4 class="text-muted mb-1">Product Name</h4>
-                <div class="mb-3">
-                    <s class="text-muted">3.65 €</s>
-                    <span class="text-dark">2.99 €</span>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3">
-            <a href="product.html" class="d-block border rounded mb-4 p-0 shadow-sm text-decoration-none">
-                <img class="img-fluid mb-3" src="https://images.unsplash.com/photo-1510018572596-e40e2619b412?fit=crop&w=500&h=350&q=80" />
-                <h4 class="text-muted mb-1">Product Name</h4>
-                <div class="mb-3">
-                    <s class="text-muted">3.65 €</s>
-                    <span class="text-dark">2.99 €</span>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3">
-            <a href="product.html" class="d-block border rounded mb-4 p-0 shadow-sm text-decoration-none">
-                <img class="img-fluid mb-3" src="https://images.unsplash.com/photo-1510018572596-e40e2619b412?fit=crop&w=500&h=350&q=80" />
-                <h4 class="text-muted mb-1">Product Name</h4>
-                <div class="mb-3">
-                    <s class="text-muted">3.65 €</s>
-                    <span class="text-dark">2.99 €</span>
-                </div>
-            </a>
+            @endforeach
         </div>
     </div>
     <h2 class="mb-3">All Categories</h2>
