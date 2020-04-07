@@ -16,7 +16,7 @@
                 <i class="icon fa fa-cube fa-3x"></i>
                 <div class="info">
                     <h4>Products</h4>
-                    <p><b>25</b></p>
+                    <p><b>{{ $productsCount }}</b></p>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
                 <i class="icon fa fa-files-o fa-3x"></i>
                 <div class="info">
                     <h4>Categories</h4>
-                    <p><b>10</b></p>
+                    <p><b>{{ $categoriesCount }}</b></p>
                 </div>
             </div>
         </div>

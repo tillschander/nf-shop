@@ -1,6 +1,6 @@
 <header class="">
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-        <a href="index.html" class="py-4">
+        <a href="{{ url('/') }}" class="py-4">
             <img src="https://www.neuefische.de/static/neuefische-gmbh-logo.svg" />
         </a>
         <a class="btn" href="cart.html">
