@@ -13,23 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$products = [
-    'id1' => 'product1',
-    'id2' => 'zweiter produktname'
-];
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend/home');
 });
 
-Route::get('/products', function () use ($products) {
-    return view('products', ['products' => $products]);
-});
-
-Route::get('/products/{id}', function ($id) use ($products) {
-    if (array_key_exists($id, $products)) {
-        return $products[$id];
-    }
-
-    abort(404, 'Product not found');
+Route::get('/admin', function () {
+    return view('backend/home');
 });
