@@ -12,7 +12,7 @@
         <div class="container d-flex justify-content-between">
             <nav>
                 @foreach($categories as $category)
-                <a class="py-2 pr-3 d-md-inline-block text-white" href="{{ url('categories/' . $category->id) }}">{{ $category->name }}</a>
+                <a class="py-2 pr-3 d-md-inline-block text-white" href="{{ url("categories/{$category->id}") }}">{{ $category->name }}</a>
                 @endforeach
             </nav>
             <form class="form-inline my-2 my-lg-0">

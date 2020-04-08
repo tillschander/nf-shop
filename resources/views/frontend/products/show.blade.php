@@ -7,16 +7,16 @@
             <img class="img-fluid mb-3" src="https://images.unsplash.com/photo-1510018572596-e40e2619b412?fit=crop&w=500&h=350&q=80" />
         </div>
         <div class="col-md-7">
-            <h1>Produkt Name</h1>
+            <h1>{{ $product->name }}</h1>
             <div class="mb-2">
-                <span class="h4 font-weight-light mr-2">2.99 €</span>
+                <span class="h4 font-weight-light mr-2">{{ $product->price }} €</span>
+                @if($product->msrp)
                 <del class="text-muted font-weight-light">
-                    3.65 €
+                    {{ $product->msrp }} €
                 </del>
+                @endif
             </div>
-            <p class="mb-4 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco</p>
+            <p class="mb-4 text-muted">{{ $product->description }}</p>
             <div class="row mb-5 align-items-end">
                 <div class="col-md-4">
                     <label class="font-weight-bold">Qty</label>

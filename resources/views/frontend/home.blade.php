@@ -7,7 +7,7 @@
     <div class="row mb-5 d-flex justify-content-between">
         @foreach($products as $product)
         <div class="col-md-3">
-            <a href="product.html" class="d-block border rounded mb-4 p-0 shadow-sm text-decoration-none">
+            <a href="{{ url("/products/{$product->id}") }}" class="d-block border rounded mb-4 p-0 shadow-sm text-decoration-none">
                 <img class="img-fluid mb-3" src="https://images.unsplash.com/photo-1510018572596-e40e2619b412?fit=crop&w=500&h=350&q=80" />
                 <h4 class="text-muted mb-1">{{ $product->name }}</h4>
                 <div class="mb-3">
@@ -22,7 +22,7 @@
     <div class="row mb-5 d-flex justify-content-between">
         @foreach($categories as $category)
         <div class="col-md-4">
-            <a href="category.html" class="d-block rounded bg-dark mb-4 py-5 shadow-sm text-decoration-none">
+            <a href="{{ url("/categories/{$category->id}") }}" class="d-block rounded bg-dark mb-4 py-5 shadow-sm text-decoration-none">
                 <h4 class="text-light m-4">{{ $category->name }}</h4>
             </a>
         </div>

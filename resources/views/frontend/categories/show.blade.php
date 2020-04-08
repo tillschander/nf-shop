@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row align-items-center">
         <div class=" col-md-9">
-            <h1 class="my-5">Category 1</h1>
+        <h1 class="my-5">{{ $category->name }}</h1>
         </div>
         <div class=" col-md-3">
             <select class="custom-select">
@@ -18,7 +18,7 @@
     <div class="row mb-5 d-flex justify-content-start text-center">
         @foreach($products as $product)
         <div class="col-md-3">
-            <a href="product.html" class="d-block border rounded mb-4 p-0 shadow-sm text-decoration-none">
+            <a href="{{ url("/products/{$product->id}") }}" class="d-block border rounded mb-4 p-0 shadow-sm text-decoration-none">
                 <img class="img-fluid mb-3" src="https://images.unsplash.com/photo-1510018572596-e40e2619b412?fit=crop&w=500&h=350&q=80" />
                 <h4 class="text-muted mb-1">{{ $product->name }}</h4>
                 <div class="mb-3">
