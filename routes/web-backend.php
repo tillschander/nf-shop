@@ -13,18 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend/home', [
-        'products' => App\Product::take(4)->get()
-    ]);
-});
-Route::get('/categories/{category}',    'CategoryController@show');
-Route::get('/products/{product}',       'ProductController@show');
-Route::get('/cart',                     function() { return view('frontend/cart'); });
-Route::get('/checkout/shipping',        function() { return view('frontend/checkout/shipping'); });
-Route::get('/checkout/payment',         function() { return view('frontend/checkout/payment'); });
-
-
 Route::get('/admin', function () {
     return view('backend/home', [
         'productsCount' => App\Product::count(),
