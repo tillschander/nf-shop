@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class CategoryController extends Controller
 {
-    public function show($id) {
-        $category = \App\Category::findOrFail($id);
+    public function show(Category $category) {
         $products = \App\Product::all();
 
         return view('frontend/categories/show', [

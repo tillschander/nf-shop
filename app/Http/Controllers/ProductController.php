@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class ProductController extends Controller
 {
-    public function show($id)
+    public function show(Product $product)
     {
-        $product = \App\Product::findOrFail($id);
-
         return view('frontend/products/show', [
             'product' => $product
         ]);
