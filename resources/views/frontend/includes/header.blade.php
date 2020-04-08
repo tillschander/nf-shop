@@ -11,9 +11,9 @@
     <div class="bg-dark">
         <div class="container d-flex justify-content-between">
             <nav>
-                <a class="py-2 pr-3 d-md-inline-block text-white" href="category.html">Category 1</a>
-                <a class="py-2 pr-3 d-md-inline-block text-white" href="category.html">Category 2</a>
-                <a class="py-2 pr-3 d-md-inline-block text-white" href="category.html">Category 3</a>
+                @foreach($categories as $category)
+                <a class="py-2 pr-3 d-md-inline-block text-white" href="{{ url('categories/' . $category->id) }}">{{ $category->name }}</a>
+                @endforeach
             </nav>
             <form class="form-inline my-2 my-lg-0">
                 <div class="input-group input-group-sm">
