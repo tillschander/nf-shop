@@ -41,17 +41,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @for($i=0; $i<10; $i++)
+                                        @foreach($products as $product)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Product Name</td>
-                                            <td>Lorem ipsum dolor sit amet...</td>
-                                            <td>32.99 €</td>
-                                            <td>34.99 €</td>
-                                            <td>61</td>
+                                            <td>{{ $product->id }}</td>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->description }}</td>
+                                            <td>{{ $product->price }} €</td>
+                                            <td>{{ $product->msrp }} €</td>
+                                            <td>{{ $product->stock }}</td>
                                             <td><a href="#" class="btn btn-primary btn-sm w-100">Edit</a></td>
                                         </tr>
-                                        @endfor
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

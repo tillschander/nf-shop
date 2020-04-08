@@ -19,12 +19,8 @@ Route::get('/admin', function () {
         'categoriesCount' => App\Category::count(),
     ]);
 });
-Route::get('/admin/products',           function() { return view('backend/products/index'); });
-Route::get('/admin/products/create',    function() { return view('backend/products/create'); });
-Route::get('/admin/products/edit',      function() { return view('backend/products/edit'); });
-Route::get('/admin/categories',         function() { return view('backend/categories/index'); });
-Route::get('/admin/categories/create',  function() { return view('backend/categories/create'); });
-Route::get('/admin/categories/edit',    function() { return view('backend/categories/edit'); });
+Route::resource('/admin/products', 'ProductController')->except(['show']);
+Route::resource('/admin/categories', 'CategoryController')->except(['show']);
 Route::get('/admin/orders',             function() { return view('backend/orders/index'); });
 Route::get('/admin/orders/show',        function() { return view('backend/orders/show'); });
 Route::get('/admin/users',              function() { return view('backend/users/index'); });
