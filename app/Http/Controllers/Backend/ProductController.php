@@ -38,17 +38,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|min:3',
-            'price' => 'required|numeric|between:0,9999.99',
-            'description' => 'required|min:3',
-            'msrp' => 'numeric|between:0,9999.99',
-            'stock' => 'integer'
-        ]);
+        Product::create($this->validateData());
 
-        Product::create($validatedData);
-
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -59,7 +51,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return redirect()->route('products.edit', $product);
+        return redirect()->route('admin.products.edit', $product);
     }
 
     /**
@@ -70,7 +62,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('backend/products/edit');
+        return view('backend/products/edit', ['product' => $product]);
     }
 
     /**
@@ -82,7 +74,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->update($this->validateData());
+
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -93,6 +87,19 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('admin.products.index');
+    }
+
+    private function validateData()
+    {
+        return request()->validate([
+            'name' => 'required|min:3',
+            'price' => 'required|numeric|between:0,9999.99',
+            'description' => 'required|min:3',
+            'msrp' => 'numeric|between:0,9999.99',
+            'stock' => 'integer'
+        ]);
     }
 }
