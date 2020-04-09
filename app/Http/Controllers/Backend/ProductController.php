@@ -38,7 +38,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required', 'min:3'],
+            'price' => 'required|numeric|between:0,9999.99',
+            'description' => ['required', 'min:3'],
+            'msrp' => 'numeric|between:0,9999.99',
+            'stock' => 'integer'
+        ]);
+
+        Product::create($validatedData);
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -49,7 +59,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return redirect()->route('products.edit', ['product' => $product]);
+        return redirect()->route('products.edit', $product);
     }
 
     /**

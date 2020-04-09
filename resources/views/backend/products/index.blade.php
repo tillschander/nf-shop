@@ -18,7 +18,7 @@
                     <div class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
                         <div class="row">
                             <div class="col-sm-12 col-md-6">
-                                <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">Add</a>
+                                <a href="{{ route('admin.products.create') }}" class="btn btn-primary btn-sm">Add</a>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div id="sampleTable_filter" class="dataTables_filter pt-2">
@@ -50,7 +50,7 @@
                                             <td>@if($product->msrp) {{ $product->msrp }}€ @endif</td>
                                             <td>{{ $product->stock }}</td>
                                             <td>
-                                                <a href="{{ route('products.edit', ['product' => $product]) }}"
+                                                <a href="{{ route('admin.products.edit', $product) }}"
                                                     class="btn btn-primary btn-sm w-100">Edit</a>
                                             </td>
                                         </tr>

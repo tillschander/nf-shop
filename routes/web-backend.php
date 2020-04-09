@@ -13,20 +13,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin', function () {
-    return view('backend/home', [
-        'productsCount' => App\Product::count(),
-        'categoriesCount' => App\Category::count(),
-    ]);
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', function () {
+        return view('backend/home', [
+            'productsCount' => App\Product::count(),
+            'categoriesCount' => App\Category::count(),
+        ]);
+    });
+
+    Route::resource('/products', 'ProductController');
+
+    Route::get('/categories',         function () {
+        return view('backend/categories/index');
+    });
+    Route::get('/categories/create',  function () {
+        return view('backend/categories/create');
+    });
+    Route::get('/categories/edit',    function () {
+        return view('backend/categories/edit');
+    });
+    Route::get('/orders',             function () {
+        return view('backend/orders/index');
+    });
+    Route::get('/orders/show',        function () {
+        return view('backend/orders/show');
+    });
+    Route::get('/users',              function () {
+        return view('backend/users/index');
+    });
+    Route::get('/users/create',       function () {
+        return view('backend/users/create');
+    });
+    Route::get('/users/edit',         function () {
+        return view('backend/users/edit');
+    });
 });
-
-Route::resource('/admin/products', 'ProductController');
-
-Route::get('/admin/categories',         function() { return view('backend/categories/index'); });
-Route::get('/admin/categories/create',  function() { return view('backend/categories/create'); });
-Route::get('/admin/categories/edit',    function() { return view('backend/categories/edit'); });
-Route::get('/admin/orders',             function() { return view('backend/orders/index'); });
-Route::get('/admin/orders/show',        function() { return view('backend/orders/show'); });
-Route::get('/admin/users',              function() { return view('backend/users/index'); });
-Route::get('/admin/users/create',       function() { return view('backend/users/create'); });
-Route::get('/admin/users/edit',         function() { return view('backend/users/edit'); });
