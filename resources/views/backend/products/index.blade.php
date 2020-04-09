@@ -18,7 +18,7 @@
                     <div class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
                         <div class="row">
                             <div class="col-sm-12 col-md-6">
-                                <a href="#" class="btn btn-primary btn-sm">Add</a>
+                                <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">Add</a>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div id="sampleTable_filter" class="dataTables_filter pt-2">
@@ -41,17 +41,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @for($i=0; $i<10; $i++)
+                                        @foreach($products as $product)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Product Name</td>
-                                            <td>Lorem ipsum dolor sit amet...</td>
-                                            <td>32.99 €</td>
-                                            <td>34.99 €</td>
-                                            <td>61</td>
-                                            <td><a href="#" class="btn btn-primary btn-sm w-100">Edit</a></td>
+                                            <td>{{ $product->id }}</td>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->description }}</td>
+                                            <td>{{ $product->price }}€</td>
+                                            <td>@if($product->msrp) {{ $product->msrp }}€ @endif</td>
+                                            <td>{{ $product->stock }}</td>
+                                            <td>
+                                                <a href="{{ route('products.edit', ['product' => $product]) }}"
+                                                    class="btn btn-primary btn-sm w-100">Edit</a>
+                                            </td>
                                         </tr>
-                                        @endfor
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -60,14 +63,25 @@
                             <div class="col-sm-12">
                                 <div class="paging_simple_numbers">
                                     <ul class="pagination justify-content-center">
-                                        <li class="paginate_button page-item previous disabled"><a href="#" aria-controls="sampleTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                        <li class="paginate_button page-item active"><a href="#" aria-controls="sampleTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
-                                        <li class="paginate_button page-item next"><a href="#" aria-controls="sampleTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                                        <li class="paginate_button page-item previous disabled"><a href="#"
+                                                aria-controls="sampleTable" data-dt-idx="0" tabindex="0"
+                                                class="page-link">Previous</a></li>
+                                        <li class="paginate_button page-item active"><a href="#"
+                                                aria-controls="sampleTable" data-dt-idx="1" tabindex="0"
+                                                class="page-link">1</a></li>
+                                        <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable"
+                                                data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                        <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable"
+                                                data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+                                        <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable"
+                                                data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+                                        <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable"
+                                                data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+                                        <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable"
+                                                data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
+                                        <li class="paginate_button page-item next"><a href="#"
+                                                aria-controls="sampleTable" data-dt-idx="7" tabindex="0"
+                                                class="page-link">Next</a></li>
                                     </ul>
                                 </div>
                             </div>

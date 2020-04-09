@@ -19,9 +19,9 @@ Route::get('/admin', function () {
         'categoriesCount' => App\Category::count(),
     ]);
 });
-Route::get('/admin/products',           function() { return view('backend/products/index'); });
-Route::get('/admin/products/create',    function() { return view('backend/products/create'); });
-Route::get('/admin/products/edit',      function() { return view('backend/products/edit'); });
+
+Route::resource('/admin/products', 'ProductController');
+
 Route::get('/admin/categories',         function() { return view('backend/categories/index'); });
 Route::get('/admin/categories/create',  function() { return view('backend/categories/create'); });
 Route::get('/admin/categories/edit',    function() { return view('backend/categories/edit'); });
