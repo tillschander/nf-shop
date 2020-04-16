@@ -20,7 +20,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             'productsCount' => App\Product::count(),
             'categoriesCount' => App\Category::count(),
         ]);
-    });
+    })->name('home');
 
     Route::resource('/products', 'ProductController');
     Route::resource('categories', 'CategoryController');
