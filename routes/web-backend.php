@@ -23,21 +23,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('home');
 
     Route::resource('/products', 'ProductController');
-    Route::resource('categories', 'CategoryController');
+    Route::resource('/categories', 'CategoryController');
 
-    Route::get('/orders',             function () {
+    Route::get('/orders', function () {
         return view('backend/orders/index');
     });
-    Route::get('/orders/show',        function () {
+    Route::get('/orders/show', function () {
         return view('backend/orders/show');
     });
-    Route::get('/users',              function () {
+    Route::get('/users', function () {
         return view('backend/users/index');
     });
-    Route::get('/users/create',       function () {
+    Route::get('/users/create', function () {
         return view('backend/users/create');
     });
-    Route::get('/users/edit',         function () {
+    Route::get('/users/edit', function () {
         return view('backend/users/edit');
     });
 });
