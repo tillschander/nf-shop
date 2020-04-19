@@ -14,7 +14,7 @@
         </li>
         <li>
             <a class="app-menu__item {{ (request()->is('admin/categories*')) ? 'active' : '' }}"
-                href="/admin/categories">
+                href="{{ route('admin.categories.index') }}">
                 <i class="app-menu__icon fa fa-files-o"></i><span class="app-menu__label">Categories</span>
             </a>
         </li>

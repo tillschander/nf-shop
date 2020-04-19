@@ -21,11 +21,13 @@
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div class="dataTables_filter pt-2">
-                                Showing 1 to 10 of 57 entries
+                                Showing {{ $products->firstItem() }}
+                                to {{ $products->lastItem() }}
+                                of {{ $products->total() }} entries
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col-sm-12">
                             <table class="table table-hover table-bordered">
                                 <thead>
@@ -60,26 +62,8 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="paging_simple_numbers">
-                                <ul class="pagination justify-content-center">
-                                    <li class="paginate_button page-item previous disabled"><a href="#"
-                                            aria-controls="sampleTable" data-dt-idx="0" tabindex="0"
-                                            class="page-link">Previous</a></li>
-                                    <li class="paginate_button page-item active"><a href="#" aria-controls="sampleTable"
-                                            data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable"
-                                            data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable"
-                                            data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable"
-                                            data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable"
-                                            data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="sampleTable"
-                                            data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
-                                    <li class="paginate_button page-item next"><a href="#" aria-controls="sampleTable"
-                                            data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-                                </ul>
+                            <div class="pagination justify-content-center">
+                                {{ $products->links() }}
                             </div>
                         </div>
                     </div>
