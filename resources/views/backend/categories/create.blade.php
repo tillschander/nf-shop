@@ -27,14 +27,10 @@
 
                 <div class="form-group">
                     <label class="control-label">Products</label>
-                    <select
-                        autocomplete="off"
-                        class="form-control @error('products') is-invalid @enderror"
-                        name="products[]"
-                        size="20"
-                        multiple>
+                    <select multiple autocomplete="off" name="products[]" size="20"
+                        class="form-control @error('products') is-invalid @enderror">
                         @foreach ($allProducts as $product)
-                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                        <option value="{{ $product->id }}">{{ $product->name }}</option>
                         @endforeach
                     </select>
                     @error('products')
