@@ -31,7 +31,8 @@
                     <select multiple autocomplete="off" name="products[]" size="20"
                         class="form-control @error('products') is-invalid @enderror">
                         @foreach ($allProducts as $product)
-                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                        <option @if($selectedProducts->contains($product)) selected @endif
+                            value="{{ $product->id }}">{{ $product->name }}</option>
                         @endforeach
                     </select>
                     @error('products')

@@ -70,7 +70,8 @@ class CategoryController extends \App\Http\Controllers\Controller
     {
         return view('backend/categories/edit', [
             'category' => $category,
-            'allProducts' => Product::all()
+            'allProducts' => Product::all(),
+            'selectedProducts' => $category->products
         ]);
     }
 
