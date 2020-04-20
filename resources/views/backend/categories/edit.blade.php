@@ -25,6 +25,23 @@
                     <p class="invalid-feedback">{{ $errors->first('name') }}</p>
                     @enderror
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label">Products</label>
+                    <select
+                        autocomplete="off"
+                        class="form-control @error('products') is-invalid @enderror"
+                        name="products[]"
+                        size="20"
+                        multiple>
+                        @foreach ($allProducts as $product)
+                            <option selected value="{{ $product->id }}">{{ $product->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('products')
+                    <p class="invalid-feedback">{{ $errors->first('products') }}</p>
+                    @enderror
+                </div>
             </div>
         </div>
     </div>

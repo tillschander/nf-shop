@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends \App\Http\Controllers\Controller
@@ -26,7 +27,9 @@ class CategoryController extends \App\Http\Controllers\Controller
      */
     public function create()
     {
-        return view('backend/categories/create');
+        return view('backend/categories/create', [
+            'allProducts' => Product::all()
+        ]);
     }
 
     /**
@@ -37,7 +40,11 @@ class CategoryController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
-        Category::create($this->validateData());
+        $this->validateData();
+        $category = Category::create([
+            'name' => $request->input('name')
+        ]);
+        $category->products()->sync($request->input('products'));
 
         return redirect()->route('admin.categories.index');
     }
@@ -62,7 +69,8 @@ class CategoryController extends \App\Http\Controllers\Controller
     public function edit(Category $category)
     {
         return view('backend/categories/edit', [
-            'category' => $category
+            'category' => $category,
+            'allProducts' => Product::all()
         ]);
     }
 
@@ -75,7 +83,11 @@ class CategoryController extends \App\Http\Controllers\Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->update($this->validateData());
+        $this->validateData();
+        $category->update([
+            'name' => $request->input('name')
+        ]);
+        $category->products()->sync($request->input('products'));
 
         return redirect()->route('admin.categories.index');
     }
@@ -96,7 +108,8 @@ class CategoryController extends \App\Http\Controllers\Controller
     public function validateData()
     {
         return request()->validate([
-            'name' => ['required', 'min:3']
+            'name' => ['required', 'min:3'],
+            'products' => 'exists:products,id'
         ]);
     }
 }
