@@ -20,6 +20,11 @@ Route::get('/', function () {
 });
 Route::get('/categories/{category}',    'CategoryController@show');
 Route::get('/products/{product}',       'ProductController@show');
-Route::get('/cart',                     function() { return view('frontend/cart'); });
+
+Route::get('/cart',                     'CartController@show');
+Route::post('/cart/add',                'CartController@addToCart');
+Route::patch('/cart/update',            'CartController@updateCart');
+Route::delete('/cart/remove',           'CartController@removeFromCart');
+
 Route::get('/checkout/shipping',        function() { return view('frontend/checkout/shipping'); });
 Route::get('/checkout/payment',         function() { return view('frontend/checkout/payment'); });
