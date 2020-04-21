@@ -14,7 +14,7 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-
+        dd($request->all());
     }
 
     public function updateCart()
