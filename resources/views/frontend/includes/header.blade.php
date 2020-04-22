@@ -3,7 +3,7 @@
         <a href="{{ url('/') }}" class="py-4">
             <img src="https://www.neuefische.de/static/neuefische-gmbh-logo.svg" />
         </a>
-        <a class="btn" href="cart.html">
+        <a class="btn" href="{{ route('cart') }}">
             Cart
             <span class="ml-1 badge badge-dark">3</span>
         </a>
