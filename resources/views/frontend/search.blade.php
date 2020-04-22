@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row align-items-center">
         <div class=" col-md-9">
-        <h1 class="my-5">Search Results for "{{ $query }}"</h1>
+            <h1 class="my-5">Search Results for "{{ $query }}"</h1>
         </div>
         <div class=" col-md-3">
             <select class="custom-select">
@@ -15,7 +15,6 @@
             </select>
         </div>
     </div>
-    <?php /*
     <div class="row mb-5 d-flex justify-content-start text-center">
         @foreach($products as $product)
         <div class="col-md-3">
@@ -35,6 +34,5 @@
     <div class="pagination justify-content-center">
         {{ $products->links() }}
     </div>
-    */ ?>
 </div>
 @endsection
