@@ -26,5 +26,7 @@ Route::post('/cart/add',                'CartController@addToCart');
 Route::patch('/cart/update',            'CartController@updateCart');
 Route::delete('/cart/remove',           'CartController@removeFromCart');
 
+Route::get('/search',                   'SearchController@index')->name('search');
+
 Route::get('/checkout/shipping',        function() { return view('frontend/checkout/shipping'); });
 Route::get('/checkout/payment',         function() { return view('frontend/checkout/payment'); });
