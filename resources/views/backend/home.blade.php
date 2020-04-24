@@ -33,7 +33,7 @@
             <i class="icon fa fa-envelope-o fa-3x"></i>
             <div class="info">
                 <h4>Orders</h4>
-                <p><b>42</b></p>
+                <p><b>{{ $ordersCount }}</b></p>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
             <i class="icon fa fa-user-o fa-3x"></i>
             <div class="info">
                 <h4>Users</h4>
-                <p><b>5</b></p>
+                <p><b>{{ $usersCount }}</b></p>
             </div>
         </div>
     </div>
