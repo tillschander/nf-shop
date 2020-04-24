@@ -19,12 +19,11 @@ class CartController extends Controller
         // calculate total... 
         $total = 0;
         foreach ($products as $index => $product) {
-            $total += $product['price'];
+            $qty = $cart[$product['id']];
+            $total += $product['price'] * $qty;
 
-            // ... and set qty + image
-            $productId = $product['id'];
-            $products[$index]['qty'] = $cart[$productId];
-            $products[$index]['image'] = Product::find($productId)->imageUrl();
+            // ... and set qty
+            $products[$index]['qty'] = $qty;
         }
 
         return view('frontend/cart', [
