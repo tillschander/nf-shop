@@ -5,7 +5,7 @@
         </a>
         <a class="btn" href="{{ route('cart') }}">
             Cart
-            <span class="ml-1 badge badge-dark">3</span>
+        <span class="ml-1 badge badge-dark">{{ count(session('cart', [])) }}</span>
         </a>
     </div>
     <div class="bg-dark">

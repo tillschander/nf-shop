@@ -3,6 +3,7 @@
 @section('content')
 <div class="container mb-4">
     <h1 class="my-5">Your Cart</h1>
+    @if(count($products))
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -21,9 +22,13 @@
                     <td><img src="https://dummyimage.com/50x50/55595c/fff"> </td>
                     <td>{{ $product['name'] }}</td>
                     <td>
-                        <form>
+                        <form method="POST" action="{{ route('updateCart') }}">
+                            @csrf
+                            @method('PATCH')
+
                             <div class="input-group">
-                            <input class="form-control mr-2" type="text" value="{{ $product['qty'] }}">
+                                <input type="hidden" name="id" value="{{ $product['id'] }}" />
+                                <input type="text" name="qty" value="{{ $product['qty'] }}" class="form-control mr-2">
                                 <button type="submit" class="btn btn-sm btn-secondary">Update</button>
                             </div>
                         </form>
@@ -31,7 +36,13 @@
                     <td></td>
                     <td class="text-right">{{ $product['price'] }} €</td>
                     <td class="text-right">
-                        <button class="btn btn-sm btn-danger">✖</button>
+                        <form method="POST" action="{{ route('removeFromCart') }}">
+                            @csrf
+                            @method('DELETE')
+
+                            <input type="hidden" name="id" value="{{ $product['id'] }}" />
+                            <button class="btn btn-sm btn-danger">✖</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
@@ -50,5 +61,8 @@
         <a href="/" class="btn btn-light">Continue Shopping</a>
         <a href="#" class="btn btn-primary">Checkout</a>
     </div>
+    @else
+    <h3 class="my-5">Your cart is empty.</h3>
+    @endif
 </div>
 @endsection
