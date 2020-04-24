@@ -29,14 +29,5 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('/products', 'ProductController');
     Route::resource('/categories', 'CategoryController');
     Route::resource('/orders', 'OrderController')->only(['index', 'show']);
-
-    Route::get('/users', function () {
-        return view('backend/users/index');
-    });
-    Route::get('/users/create', function () {
-        return view('backend/users/create');
-    });
-    Route::get('/users/edit', function () {
-        return view('backend/users/edit');
-    });
+    Route::resource('/users', 'UserController');
 });
