@@ -11,7 +11,7 @@
         <li class="breadcrumb-item">Create</li>
     </ul>
 </div>
-<form class="tile" method="POST" action="{{ route('admin.products.store') }}">
+<form class="tile" method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
     @csrf
 
     <div class="tile-body">
@@ -61,9 +61,11 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Image</label>
-                    <div class="form-control py-3">
-                        <img class="w-100 mb-3" src="https://via.placeholder.com/150" />
-                        <input type="file">
+                    <div class="form-control py-3 @error('image') is-invalid @enderror">
+                        <input type="file" name="image">
+                        @error('image')
+                        <p class="invalid-feedback">{{ $errors->first('image') }}</p>
+                        @enderror
                     </div>
                 </div>
             </div>

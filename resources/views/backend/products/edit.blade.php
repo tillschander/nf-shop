@@ -1,6 +1,6 @@
 @extends('backend/layouts/app')
 
-@section('content')x
+@section('content')
 <div class="app-title">
     <div>
         <h1>Edit</h1>
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label class="control-label">Image</label>
                     <div class="form-control py-3 @error('image') is-invalid @enderror">
-                    <img class="w-100 mb-3" src="{{ $product->imageUrl() }}" />
+                        <img class="w-100 mb-3" src="{{ $product->imageUrl() }}" />
                         <input type="file" name="image">
                         @error('image')
                         <p class="invalid-feedback">{{ $errors->first('image') }}</p>

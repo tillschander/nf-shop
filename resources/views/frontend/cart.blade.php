@@ -19,7 +19,7 @@
             <tbody>
                 @foreach($products as $product)
                 <tr>
-                    <td><img src="https://dummyimage.com/50x50/55595c/fff"> </td>
+                    <td><img width="40" height="40" src="{{ $product['image'] }}"></td>
                     <td>{{ $product['name'] }}</td>
                     <td>
                         <form method="POST" action="{{ route('updateCart') }}">

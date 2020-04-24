@@ -38,7 +38,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create($this->validateData());
+        $data = $this->validateData();
+        if ($request->has('image')) {
+            $path = $request->file('image')->store('/products/images', 'public');
+            $data['image'] = $path;
+        }
+        Product::create($data);
 
         return redirect()->route('admin.products.index');
     }
@@ -106,7 +111,8 @@ class ProductController extends Controller
             'price' => 'required|numeric|between:0,9999.99',
             'description' => 'required|min:3',
             'msrp' => 'numeric|between:0,9999.99',
-            'stock' => 'integer'
+            'stock' => 'integer',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
     }
 }

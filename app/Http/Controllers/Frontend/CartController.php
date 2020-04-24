@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Product;
 
 class CartController extends Controller
 {
@@ -13,16 +14,17 @@ class CartController extends Controller
 
         // find products from cart
         $ids = array_keys($cart);
-        $products = \App\Product::find($ids)->toArray();
+        $products = Product::find($ids)->toArray();
 
         // calculate total... 
         $total = 0;
         foreach ($products as $index => $product) {
             $total += $product['price'];
 
-            // ... and set qty
+            // ... and set qty + image
             $productId = $product['id'];
             $products[$index]['qty'] = $cart[$productId];
+            $products[$index]['image'] = Product::find($productId)->imageUrl();
         }
 
         return view('frontend/cart', [

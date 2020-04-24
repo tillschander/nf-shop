@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col-md-5">
-            <img class="img-fluid mb-3" src="https://images.unsplash.com/photo-1510018572596-e40e2619b412?fit=crop&w=500&h=350&q=80" />
+            <img class="img-fluid mb-3" src="{{ $product->imageUrl() }}" />
         </div>
         <div class="col-md-7">
             <h1>{{ $product->name }}</h1>
