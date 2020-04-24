@@ -1,5 +1,5 @@
 <header class="app-header">
-    <a class="app-header__logo" href="index-2.html">Neue Fische</a>
+<a class="app-header__logo" href="{{ route('admin.home') }}">Neue Fische</a>
     <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
     <ul class="app-nav">
         <li class="dropdown">
