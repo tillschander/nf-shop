@@ -5,9 +5,15 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(User::class, 'user');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +45,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData();
-        $data['password'] = \Hash::make($request->input('password'));
+        $data['password'] = Hash::make($request->input('password'));
         User::create($data);
 
         return redirect('admin/users');
@@ -77,7 +83,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $data = $this->validateData();
-        $data['password'] = \Hash::make($request->input('password'));
+        $data['password'] = Hash::make($request->input('password'));
         $user->update($data);
 
         return redirect('admin/users');

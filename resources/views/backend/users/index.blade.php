@@ -44,8 +44,12 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td><a href="{{ route('admin.users.edit', $user->id) }}"
-                                                class="btn btn-primary btn-sm w-100">Edit</a></td>
+                                        <td>
+                                            @can('update', $user)
+                                            <a href="{{ route('admin.users.edit', $user->id) }}"
+                                                class="btn btn-primary btn-sm w-100">Edit</a>
+                                            @endcan
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
