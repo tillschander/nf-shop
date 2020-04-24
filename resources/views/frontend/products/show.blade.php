@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col-md-5">
-            <img class="img-fluid mb-3" src="{{ $product->imageUrl() }}" />
+            <img class="img-fluid mb-3" src="{{ $product->image }}" />
         </div>
         <div class="col-md-7">
             <h1>{{ $product->name }}</h1>

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -13,10 +14,10 @@ class Product extends Model
         return $this->belongsToMany('App\Category');
     }
 
-    public function imageUrl()
+    public function getImageAttribute($value)
     {
-        if ($this->image) {
-            return \Storage::url($this->image);
+        if ($value) {
+            return Storage::url($value);
         }
 
         return 'https://via.placeholder.com/500';
