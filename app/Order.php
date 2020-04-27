@@ -10,4 +10,16 @@ class Order extends Model
     {
       return $this->hasMany('App\OrderItem');
     }
+
+    public function addItems(array $items)
+    {
+      foreach ($items as $item) {
+        $this->orderItems()->updateOrCreate([
+          'name'        => $item['name'],
+          'description' => $item['description'],
+          'qty'         => $item['qty'],
+          'price'       => $item['price']
+        ]);
+      }
+    }
 }
