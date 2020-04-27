@@ -14,13 +14,8 @@ class CheckoutController extends Controller
         // schicke Nutzer ohne Warenkorb zurück
         if (!session('cart')) return redirect('/cart');
 
-        // prüfe ob der Nutzer schon eine Bestellung in der Session hat
-        if (session('order')) {
-            $orderId = session('order');
-            $order = Order::find($orderId);
-        } else {
-            $order = Order::create();
-        }
+        // finde Bestellung via ID aus der session, oder lege eine neue an
+        $order = Order::firstOrCreate(['id' => session('order')]);
 
         // füge den Inhalt des Warenkorbs der Bestellung hinzu
         $cart = session('cart');
