@@ -9,27 +9,15 @@
                 Order Summary
             </h4>
             <ul class="list-group mb-3">
+                @foreach($order->orderItems as $item)
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0">1 x Product name</h6>
-                        <small class="text-muted">Brief description</small>
+                        <h6 class="my-0">{{ $item->qty }} x {{ $item->name }}</h6>
+                        <small class="text-muted">{{ Str::limit($item->description, 30) }}</small>
                     </div>
-                    <span class="text-muted">$12</span>
+                    <span class="text-muted">{{ $item->price }}€</span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">2 x Second product</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$8</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">2 x Third item</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$5</span>
-                </li>
+                @endforeach
                 <li class="list-group-item d-flex justify-content-between text-uppercase">
                     <strong>Total</strong>
                     <strong>$20</strong>
