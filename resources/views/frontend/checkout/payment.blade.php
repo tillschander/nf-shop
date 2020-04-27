@@ -70,7 +70,7 @@
             </div>
             <hr class="mb-4">
             <div class="d-flex justify-content-between">
-                <a href="/checkout-shipping" class="btn btn-light">Back</a>
+                <a href="{{ url('checkout/shipping') }}" class="btn btn-light">Back</a>
                 <button class="btn btn-primary" type="submit">Buy</button>
             </div>
         </div>
