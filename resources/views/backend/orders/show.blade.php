@@ -18,7 +18,7 @@
             <pre>{{ $order->address }}</pre>
         </div>
         <div class="form-group">
-            <label class="control-label">Items</label>
+            <label class="control-label">Items:</label>
             <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
@@ -39,6 +39,9 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="form-group">
+            <div>Total: {{ $order->getTotal() }}€</div>
         </div>
     </div>
     <div class="tile-footer">

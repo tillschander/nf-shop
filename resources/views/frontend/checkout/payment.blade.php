@@ -11,35 +11,23 @@
             <div>Address:</div>
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <pre class="mb-0">Max Musermann<br>Musterstr. 42<br>1234 Musterstadt</pre>
+                <pre class="mb-0">{{ $order->address }}</pre>
                 </li>
             </ul>
             <div>Items:</div>
             <ul class="list-group mb-3">
+                @foreach($order->orderItems as $item)
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0">1 x Product name</h6>
-                        <small class="text-muted">Brief description</small>
+                        <h6 class="my-0">{{ $item->qty }} x {{ $item->name }}</h6>
+                        <small class="text-muted">{{ Str::limit($item->description, 25) }}</small>
                     </div>
-                    <span class="text-muted">$12</span>
+                    <span class="text-muted">{{ $item->price }}€</span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">2 x Second product</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$8</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">2 x Third item</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$5</span>
-                </li>
+                @endforeach
                 <li class="list-group-item d-flex justify-content-between text-uppercase">
                     <strong>Total</strong>
-                    <strong>$20</strong>
+                    <strong>{{ $order->getTotal() }}€</strong>
                 </li>
             </ul>
         </div>
@@ -71,7 +59,7 @@
             <hr class="mb-4">
             <div class="d-flex justify-content-between">
                 <a href="{{ url('checkout/shipping') }}" class="btn btn-light">Back</a>
-                <button class="btn btn-primary" type="submit">Buy</button>
+                <a href="{{ url('checkout/success') }}" class="btn btn-primary">Buy</a>
             </div>
         </div>
     </div>

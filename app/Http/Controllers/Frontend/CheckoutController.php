@@ -37,11 +37,25 @@ class CheckoutController extends Controller
 
     public function payment()
     {
-        return view('frontend/checkout/payment');
+        // sende Nutzer ohne Order-ID in der Session zurück
+        if (!session('order')) return redirect('/');
+
+        // hol die Bestellung mittels der ID aus der Session
+        $order = Order::find(session('order'));
+
+        // rendere die payment-Seite
+        return view('frontend/checkout/payment', [
+            'order' => $order
+        ]);
     }
 
     public function success()
     {
+        // lösche Cart- und Order-Session
+        session()->forget('cart');
+        session()->forget('order');
+
+        // rendere die success-Seite 
         return view('frontend/checkout/success');
     }
 
@@ -52,5 +66,25 @@ class CheckoutController extends Controller
 
     public function setShippingAddress()
     {
+        // sende Nutzer ohne Order-ID in der Session zurück
+        if (!session()->has('order')) return redirect('/');
+
+        // validiere die Nutzereingaben
+        $data = request()->validate([
+            'fullName' => 'required|min:3',
+            'address' => 'required|min:3',
+            'zip' => 'required|numeric|min:3',
+            'city' => 'required|min:3',
+            'country' => 'required|min:3'
+        ]);
+
+        // hol die Bestellung mittels der ID aus der Session
+        // setze die Adresse und speichere die Bestellung
+        $order = Order::find(session('order'));
+        $order->address = join("\n", $data);
+        $order->save();
+
+        // leite den Nutzer auf die payment-Seite weiter
+        return redirect('checkout/payment');
     }
 }

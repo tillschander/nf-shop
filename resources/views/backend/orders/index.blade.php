@@ -35,6 +35,7 @@
                                         <th>Created At</th>
                                         <th>Address</th>
                                         <th>Items</th>
+                                        <th>Total</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -47,6 +48,7 @@
                                             <pre>{{ $order->address }}</pre>
                                         </td>
                                         <td>{{ $order->orderItems->count() }}</td>
+                                        <td>{{ $order->getTotal() }}€</td>
                                         <td><a href="{{ route('admin.orders.show', $order) }}"
                                                 class="btn btn-primary btn-sm w-100">View</a></td>
                                     </tr>
