@@ -7,11 +7,14 @@
             <h1 class="my-5">Search Results for "{{ $query }}"</h1>
         </div>
         <div class=" col-md-3">
-            <select class="custom-select">
-                <option selected>Order by</option>
-                <option value="1">Price</option>
-                <option value="2">Name</option>
-                <option value="3">Date</option>
+            <select class="custom-select" onchange="changeUrlBar(this.value)">
+                <option value="{{ request()->fullUrl() }}" @if($orderBy==='id' ) selected @endif>Order by</option>
+                <option value="{{ request()->fullUrlWithQuery(['orderBy' => 'price']) }}" @if($orderBy==='price' )
+                    selected @endif>Price</option>
+                <option value="{{ request()->fullUrlWithQuery(['orderBy' => 'name']) }}" @if($orderBy==='name' )
+                    selected @endif>Name</option>
+                <option value="{{ request()->fullUrlWithQuery(['orderBy' => 'created_at']) }}"
+                    @if($orderBy==='created_at' ) selected @endif>Date</option>
             </select>
         </div>
     </div>
@@ -34,4 +37,9 @@
         {{ $products->links() }}
     </div>
 </div>
+<script>
+    function changeUrlBar(value) {
+        window.location = value;
+    }
+</script>
 @endsection
