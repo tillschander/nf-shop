@@ -17,6 +17,8 @@ class Order extends Model
   {
     foreach ($items as $item) {
       $this->orderItems()->updateOrCreate([
+        'name'        => $item['name']
+      ],[
         'name'        => $item['name'],
         'description' => $item['description'],
         'qty'         => $item['qty'],
