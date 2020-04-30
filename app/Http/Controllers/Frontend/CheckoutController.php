@@ -43,9 +43,19 @@ class CheckoutController extends Controller
         // hol die Bestellung mittels der ID aus der Session
         $order = Order::find(session('order'));
 
+        // Create Stripe Payment Intent
+        \Stripe\Stripe::setApiKey(\Config::get('stripe.secret_key'));
+        $intent = \Stripe\PaymentIntent::create([
+            'amount' => round($order->getTotal() * 100),
+            'currency' => 'eur',
+        ]);
+        $order->stripe_pi_id = $intent->id;
+        $order->save();
+
         // rendere die payment-Seite
         return view('frontend/checkout/payment', [
-            'order' => $order
+            'order' => $order,
+            'intent' => $intent
         ]);
     }
 
