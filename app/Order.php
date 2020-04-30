@@ -18,7 +18,7 @@ class Order extends Model
     foreach ($items as $item) {
       $this->orderItems()->updateOrCreate([
         'name'        => $item['name']
-      ],[
+      ], [
         'name'        => $item['name'],
         'description' => $item['description'],
         'qty'         => $item['qty'],
@@ -36,5 +36,18 @@ class Order extends Model
     }
 
     return $subTotal;
+  }
+
+  public function getStatus()
+  {
+    $status = 'no_stripe_id_yet';
+
+    if ($this->stripe_pi_id) {
+      \Stripe\Stripe::setApiKey(config('stripe.secret_key'));
+      $paymentIntent = \Stripe\PaymentIntent::retrieve($this->stripe_pi_id);
+      $status = $paymentIntent->status;
+    }
+
+    return $status;
   }
 }

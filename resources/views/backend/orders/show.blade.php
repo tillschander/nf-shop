@@ -41,6 +41,9 @@
             </table>
         </div>
         <div class="form-group">
+        <div>Stripe Status: <span class="badge badge-secondary">{{ $order->getStatus() }}</span></div>
+        </div>
+        <div class="form-group">
             <div>Total: {{ $order->getTotal() }}€</div>
         </div>
     </div>
