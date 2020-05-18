@@ -1,10 +1,9 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers\Backend\Auth;
+namespace Tests\Feature\Http\Controllers\Backend;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\User;
 
 class ProductControllerTest extends TestCase
 {
@@ -15,7 +14,7 @@ class ProductControllerTest extends TestCase
      */
     public function testIndexRouteDisplaysProductsView()
     {
-        $user = factory(\App\User::class)->create();
+        $user = factory(User::class)->create();
         $response = $this->actingAs($user)->get(route('admin.products.index'));
 
         $response->assertViewIs('backend.products.index');
