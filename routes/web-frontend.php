@@ -13,11 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend/home', [
-        'products' => App\Product::take(4)->get()
-    ]);
-});
+Route::get('/',                         'HomeController@show');
 Route::get('/categories/{category}',    'CategoryController@show');
 Route::get('/products/{product}',       'ProductController@show');
 
